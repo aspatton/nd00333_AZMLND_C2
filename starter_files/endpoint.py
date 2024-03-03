@@ -2,23 +2,23 @@ import requests
 import json
 
 # URL for the web service, should be similar to:
-# 'http://8530a665-66f3-49c8-a953-b82a2d312917.eastus.azurecontainer.io/score'
-scoring_uri = ''
+scoring_uri = 'http:/xxxxx.southcentralus.azurecontainer.io/score'
 # If the service is authenticated, set the key or token
-key = ''
+key = 'key'
 
 # Two sets of data to score, so we get two results back
-data = {"data":
+data = {"Inputs":
+	{"data":
         [
           {
-            "age": 17,
+            "age": 33,
             "campaign": 1,
             "cons.conf.idx": -46.2,
             "cons.price.idx": 92.893,
             "contact": "cellular",
-            "day_of_week": "mon",
+            "day_of_week": "sun",
             "default": "no",
-            "duration": 971,
+            "duration": 400,
             "education": "university.degree",
             "emp.var.rate": -1.8,
             "euribor3m": 1.299,
@@ -33,7 +33,7 @@ data = {"data":
             "previous": 1
           },
           {
-            "age": 87,
+            "age": 26,
             "campaign": 1,
             "cons.conf.idx": -46.2,
             "cons.price.idx": 92.893,
@@ -43,7 +43,7 @@ data = {"data":
             "duration": 471,
             "education": "university.degree",
             "emp.var.rate": -1.8,
-            "euribor3m": 1.299,
+            "euribor3m": 3.299,
             "housing": "yes",
             "job": "blue-collar",
             "loan": "yes",
@@ -54,7 +54,8 @@ data = {"data":
             "poutcome": "failure",
             "previous": 1
           },
-      ]
+      ],
+	},
     }
 # Convert to JSON string
 input_data = json.dumps(data)
