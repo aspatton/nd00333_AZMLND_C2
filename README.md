@@ -1,4 +1,4 @@
-# Operationalizing Machine Learning Final Project
+# Udacity Machine Learning Engineer with Microsoft Azure 2nd Project
 This is the secone project for the Machine Learning Engineer with Microsoft Azure course from Udacity.
 
 Course -> https://emc.udacity.com/c/optum/catalog/t/i/nd/nd00333
