@@ -15,6 +15,8 @@ Dataset link -> https://automlsamplenotebookdata.blob.core.windows.net/automl-sa
 ### 1. Authentication
 Create a Service Principal using the az cli via my personal account. The SP was used to establish the correct permissions on resources, so they had the correct permissions to access other resources.
 
+- screenshots/Step 1 - Create Custom Role - Alternative.png
+
 ### 2. Automated ML Experiment
 Using the Bankmarketing dataset, a binary classification model will be trained through AutoML with the goal of identifying if a client will subscribe to a term deposit with the bank. This includes uploading the data as a "Registered Dataset", as shown in the screenshot below:
 
