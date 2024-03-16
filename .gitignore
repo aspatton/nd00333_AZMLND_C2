@@ -4,3 +4,4 @@ config.*
 *.bin
 .github
 *.github
+*.DS_Store
