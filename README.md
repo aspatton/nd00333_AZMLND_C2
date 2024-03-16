@@ -6,6 +6,8 @@ Course -> https://emc.udacity.com/c/optum/catalog/t/i/nd/nd00333
 ## Overview
 This project is part of the Udacity Machine Learning Engineer with Microsoft Azure Nanodegree. The focus of this project is the full pipeline for a ML project from start to finish. This includes testing and running the model via AutoML, finding the best peforming model, deploying it as an endpoint and consuming it (using Swagger) with a big focus on monitoring/logging. All of this is accomplished in an automated fashion via code, so no point-and-click in the Azure Portal at this point. You are an MLOps Engineer, prove it!
 
+![overview](./Project%202%20-%20flow.png)
+
 The dataset used in this project contains direct marketing data from financial institution's marketing campaign collected via telephone calls. The campaign's goal was an increase in subscribers. The main point of the model is determine if the user will subscribe (yes) or not (no). Thus, the predictor or Y is this decision.
 
 Reference -> https://archive.ics.uci.edu/ml/datasets/bank+marketing
@@ -15,13 +17,13 @@ Dataset link -> https://automlsamplenotebookdata.blob.core.windows.net/automl-sa
 ### 1. Authentication
 Create a Service Principal using the az cli via my personal account. The SP was used to establish the correct permissions on resources, so they had the correct permissions to access other resources.
 
-/screenshots/Step%201%20-%20Create%20Custom%20Role%20-%20Alternative.png
+![authentication](./screenshots/Step%201%20-%20Create%20Custom%20Role%20-%20Alternative.png)
 
-/screenshots/Step%201%20-%20Create%20Rback.png
+![authentication](./screenshots/Step%201%20-%20Create%20Rback.png)
 
-/screenshots/Step%201%20-%20Error%20with%20CLI%20and%20Workspace%20Commands.png
+![authentication](./screenshots/Step%201%20-%20Error%20with%20CLI%20and%20Workspace%20Commands.png)
 
-/screenshots/Step%201%20-%20SP%20assigned%20to%20Workspace.png
+![authentication](./screenshots/Step%201%20-%20SP%20assigned%20to%20Workspace.png)
 
 ### 2. Automated ML Experiment
 Using the Bankmarketing dataset, a binary classification model will be trained through AutoML with the goal of identifying if a client will subscribe to a term deposit with the bank. This includes uploading the data as a "Registered Dataset", as shown in the screenshot below:
