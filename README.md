@@ -38,11 +38,11 @@ Ultimately, I assigned the SP to the Workspace via the Azure Portal UI as I was 
 ### 2. Automated ML Experiment
 Using the Bankmarketing dataset, a binary classification model will be trained through AutoML with the goal of identifying if a client will subscribe to a term deposit with the bank. This includes uploading the data as a "Registered Dataset", as shown in the screenshot below:
 
-![automation](./screenshots/Step%202%20-%20AutoML%20-%20Banking%20Dataset.png)
+![automation](./screenshots/Step%202%20-%20Banking%20Dataset.png)
 
 Once the dataset has been uploaded, we can create a new experiment through Azure ML Studio by going to `Automated ML`, selecting `New Automated ML job`, selecting the uploaded `bankmarketing_train` Dataset, and selecting a compute cluster to run the job on. The completed experiment for my run can be found below:
 
-![automation](./screenshots/Step%202%20-%20AutoML%20-%20AutoML%20Experiment.png)
+![automation](./screenshots/Step%202%20-%20AutoML%20Experiment.png)
 
 From this completed experiment, we're then able to get the best model, in this case it was a VotingEnsemble model with an AUC_Weighted score of :
 
