@@ -6,6 +6,8 @@ Course -> https://emc.udacity.com/c/optum/catalog/t/i/nd/nd00333
 ## Overview
 This project is part of the Udacity Machine Learning Engineer with Microsoft Azure Nanodegree. The focus of this project is the full pipeline for a ML project from start to finish. This includes testing and running the model via AutoML, finding the best peforming model, deploying it as an endpoint and consuming it (using Swagger) with a big focus on monitoring/logging. All of this is accomplished in an automated fashion via code, so no point-and-click in the Azure Portal at this point. You are an MLOps Engineer, prove it!
 
+The following diagram shows the project flow for both the first part and now the second part (this project).
+
 ![overview](./Project%202%20-%20flow.png)
 
 The dataset used in this project contains direct marketing data from financial institution's marketing campaign collected via telephone calls. The campaign's goal was an increase in subscribers. The main point of the model is determine if the user will subscribe (yes) or not (no). Thus, the predictor or Y is this decision.
@@ -17,24 +19,42 @@ Dataset link -> https://automlsamplenotebookdata.blob.core.windows.net/automl-sa
 ### 1. Authentication
 Create a Service Principal using the az cli via my personal account. The SP was used to establish the correct permissions on resources, so they had the correct permissions to access other resources.
 
+I was able to create the SP via code. With that complete, I created a custom role.
+
 ![authentication](./screenshots/Step%201%20-%20Create%20Custom%20Role%20-%20Alternative.png)
+
+Next, RBAC was created as the next diagram illustrates.
 
 ![authentication](./screenshots/Step%201%20-%20Create%20Rback.png)
 
+The next step was the assignement of owner rights of the workspace to the SP, but this no longer works as the SDK has changed.
+
 ![authentication](./screenshots/Step%201%20-%20Error%20with%20CLI%20and%20Workspace%20Commands.png)
+
+Ultimately, I assigned the SP to the Workspace via the Azure Portal UI as I was running out of time.
 
 ![authentication](./screenshots/Step%201%20-%20SP%20assigned%20to%20Workspace.png)
 
 ### 2. Automated ML Experiment
 Using the Bankmarketing dataset, a binary classification model will be trained through AutoML with the goal of identifying if a client will subscribe to a term deposit with the bank. This includes uploading the data as a "Registered Dataset", as shown in the screenshot below:
 
+![automation](./screenshots/Step%202%20-%20AutoML%20-%20Banking%20Dataset.png)
+
 Once the dataset has been uploaded, we can create a new experiment through Azure ML Studio by going to `Automated ML`, selecting `New Automated ML job`, selecting the uploaded `bankmarketing_train` Dataset, and selecting a compute cluster to run the job on. The completed experiment for my run can be found below:
+
+![automation](./screenshots/Step%202%20-%20AutoML%20-%20AutoML%20Experiment.png)
 
 From this completed experiment, we're then able to get the best model, in this case it was a VotingEnsemble model with an AUC_Weighted score of :
 
+![automation](./screenshots/Step%202%20-%20AutoML%20-%20Best%20Model.png)
 
 ### 3. Deploy the Best Model
 Given this best model, we are then able to deploy it using an Azure Container Instance (ACI), which allows us to interact with the model by sending POST requests to the generated endpoint. To send a request to the endpoint for a prediction, all that is required is the endpoint URI, the primary key, and the JSON data that will be sent in the body of the request.
+
+![automation](./screenshots/Step%203%20-%20Deploy%20Model.png)
+
+![automation](./screenshots/Step%203%20-%20Select%20-%20Best%20Model.png)
+
 
 ### 4. Enable Logging
 In order to monitor the performance of the deployed model and see incoming requests and outgoing responses as well as output logs, Application Insights should be enabled. While this can be done by checking the box to enable App Insights at the time of deployment, it can also be done through the Python SDK for Azure. Once App Insights is enabled, this can be seen on the Details tab of th endpoint, as shown in the image below:
