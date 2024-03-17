@@ -225,4 +225,6 @@ There is a lot more work to do in addition to monitoring and retraining this mod
 
 ## Screencass
 
-A screencast of the project can be found here: https://youtu.be/IAmo9QDi6Ig
+Note: Added higher quality link, this video requirement makes no sense. Please let me know when reviewed so I can remove it as it has my Azure subscription info in the video.
+
+A screencast of the project can be found here: https://youtu.be/pEzX5opOr4w
