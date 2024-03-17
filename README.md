@@ -68,6 +68,8 @@ Now that I have the best model, I can deploy it using Azure Container Instance (
 
 A key MLOps tasks is monitoring for issues and performance. This can be handled by monitoring incoming traffic o requests as well as output log. This logged is provided via Application Insights, but this must be enabled. While this can be done by checking the box to enable App Insights at the time of deployment, code can also be used to enable it (Python SDK for Azure). The log.py script was used to enable the logging via code. With it enabled, this can be seen on the endpoint details as shown below:
 
+![consume](./screenshots/Step%206%20-%20app%20insights%20script%20run.png)
+
 ![logging](./screenshots/Step%204%20-%20Enable%20Logging.png)
 
 Once App Insights is enabled, logs for the model are viewable either via App Insights or printed in the Python console, as seen below:
@@ -110,7 +112,7 @@ With the model deployed and the endpoint available, I executed 'starter_files/en
 
 ![consume](./screenshots/Step%206%20-%20Modify%20endpoint%20file.png)
 
-![consume](./screenshots/Step%206%20-%20app%20insights%20script%20run.png)
+
 
 You see the output is the same for both requests, demonstrating a couple of the ways we can consume the model through the deployment endpoint.
 
