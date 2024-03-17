@@ -185,9 +185,11 @@ Pipelines:
 
 And with that, we have a pipeline to train and deploy a new model and an endpoint that we can use to interact with it. Whether it's through Azure ML Studio directly or the Azure SDK for Python, Azure Automated ML can be leveraged to train and deploy highly performant models quickly and efficiently.
 
+![pipeline](./screenshots/Step%207%20-%20published%20pipeline.png)
+
 Published pipeline endpoint:
 
-![pipeline](./screenshots/Step%207%20-%20published%20pipeline.png)
+![pipeline](./screenshots/Step%207%20-%20Published%20Pipeline.png)
 
 ## Architecture Diagram
 
