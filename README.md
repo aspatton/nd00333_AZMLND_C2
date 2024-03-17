@@ -69,9 +69,9 @@ Once we ensure App Insights is enabled, we can then view the logs for the model.
 
 The script to do this is located at `starter_files/logs.py`
 
-![logging](./screenshots/Step%204%20-%20run%20logs.py%20-1.png)
+![logging](./screenshots/Step%204%20-%20run%20logs.py%20-%201.png)
 
-![logging](./screenshots/Step%204%20-%20run%20logs.py%20-2.png)
+![logging](./screenshots/Step%204%20-%20run%20logs.py%20-%202.png)
 
 ### 5. Swagger Documentation
 Swagger is a powerful tool that helps to better visualize API requests and responses. It gives users information about the expected request body as well as expected responses. The information to populate a Swagger UI is provided to us on the deployed endpoint as a JSON file that can be viewed on a local containerized instance of Swagger. In the image below, we can see that once we download the `swagger.json` from the endpoint deployment Details page and serve it through the Python script located at `starter_files/swagger/serve.py`, the details of the endpoint are populated including available routes:
@@ -80,7 +80,7 @@ Swagger is a powerful tool that helps to better visualize API requests and respo
 
 We can also see the expected format of the POST request body:
 
-![swagger](./screenshots/Step%205%20-%20launching%20local%20swagger%20via%20docker%20and%20swagger%20copy.png)
+![swagger](./screenshots/Step%205%20-%20launching%20local%20swagger%20via%20docker%20and%20swagger%20copy.jpg)
 
 ![swagger](./screenshots/Step%205%20-%20launching%20local%20swagger%20via%20docker%20and%20swagger.png)
 
