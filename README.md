@@ -20,6 +20,23 @@ Here is the data loaded into the ML workspace as a data asset.
 
 ![automation](./screenshots/Step%202%20-%20Banking%20Dataset.png)
 
+The project consists of two main parts ...
+
+Part 1:
+
+- Create a Dataset from the bank marketing open dataset.
+- Create a Compute Cluster to be used in the experiments/scripts.
+- AutoML Experiment: First, create an AutoML experiment. 
+- Model Deployment: The 'Best Model' from AutomML is used to deploy an endpoint.
+- Enable Logging: Monitor the model via logging
+- Swagger Documentation: Utilize Swagger to document endpoint input and output.
+- Consume Model Endpoint: We interact with the endpoint using test data.
+
+Part2:
+
+- Create Pipeline: Fully automate the process by creating a Azure ML Pipeline via Python SDK.
+- Publish Pipeline: Publish the pipeline as REST endpoint.
+
 ### 1. Authentication
 
 Create a Service Principal using the az cli via my personal account. The SP was used to establish the correct permissions on resources, so they had the correct permissions to access other resources.
