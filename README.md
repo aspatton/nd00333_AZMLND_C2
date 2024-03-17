@@ -53,29 +53,53 @@ Given this best model, we are then able to deploy it using an Azure Container In
 
 ![automation](./screenshots/Step%203%20-%20Deploy%20Model.png)
 
-![automation](./screenshots/Step%203%20-%20Select%20-%20Best%20Model.png)
+![automation](./screenshots/Step%203%20-%20Select%20Best%20Model.png)
 
 
 ### 4. Enable Logging
 In order to monitor the performance of the deployed model and see incoming requests and outgoing responses as well as output logs, Application Insights should be enabled. While this can be done by checking the box to enable App Insights at the time of deployment, it can also be done through the Python SDK for Azure. Once App Insights is enabled, this can be seen on the Details tab of th endpoint, as shown in the image below:
 
+![logging](./screenshots/Step%204%20-%20Enable%20Logging.png)
+
 Once we ensure App Insights is enabled, we can then view the logs for the model. This can be done directly through App Insights, but they can also be printed in the Python console, as seen below:
 
+![logging](./screenshots/Step%204%20-%20Logging%20details.png)
+
+![logging](./screenshots/Step%204%20-%20logging%20enabled.png)
+
 The script to do this is located at `starter_files/logs.py`
+
+![logging](./screenshots/Step%204%20-%20run%20logs.py%20-1.png)
+
+![logging](./screenshots/Step%204%20-%20run%20logs.py%20-2.png)
 
 ### 5. Swagger Documentation
 Swagger is a powerful tool that helps to better visualize API requests and responses. It gives users information about the expected request body as well as expected responses. The information to populate a Swagger UI is provided to us on the deployed endpoint as a JSON file that can be viewed on a local containerized instance of Swagger. In the image below, we can see that once we download the `swagger.json` from the endpoint deployment Details page and serve it through the Python script located at `starter_files/swagger/serve.py`, the details of the endpoint are populated including available routes:
 
+![swagger](./screenshots/Step%205%20-%20API%20loaded%20in%20local%20Swagger.png)
 
 We can also see the expected format of the POST request body:
 
+![swagger](./screenshots/Step%205%20-%20launching%20local%20swagger%20via%20docker%20and%20swagger%20copy.png)
+
+![swagger](./screenshots/Step%205%20-%20launching%20local%20swagger%20via%20docker%20and%20swagger.png)
+
 Lastly, we are able to see the expected responses from the previous request. The example shows `example_value` as the response, but in this case, it will be a list of either `yes` or `no` depending on the model's prediction:
+
+![swagger](./screenshots/Step%205%20-%20running%20server%20python%20script.png)
 
 In addition to viewing the API details, Swagger UI also allows you to make requests directly through the UI if you authenticate with a valid Authorization Bearer token at the top of the page. On this locally hosted instance of Swagger UI, this cannot be done due to issues with CORS, but normally you would be able to make a request directly by passing your request JSON into the UI and clicking "Execute".
 
 ### 6. Consume Model Endpoints
 With the model deployed and our endpoint available, we can run the `starter_files/endpoint.py` in order to get a prediction for two examples. We can see the output of this in the two images below, where the first image is from Jupyter Notebook from a compute instance in Azure while the second is from a bash terminal run locally:
 
+![consume](./screenshots/Step%206%20-%20AppInsights%20Overview%20page.png)
+
+![consume](./screenshots/Step%206%20-%20Execute%20endpoint%20python%20file.png)
+
+![consume](./screenshots/Step%206%20-%20Modify%20endpoint%20file.png)
+
+![consume](./screenshots/Step%206%20-%20app%20insights%20script%20run.png)
 
 We can see that the output is the same for both requests, demonstrating a couple of the ways we can consume the model through the deployment endpoint.
 
@@ -84,20 +108,49 @@ Now that the model is deployed and accessible, it is important to ensure that th
 
 Apache Benchmark is a great tool to ensure that a deployed model is able to handle the expected request volume before being deployed into a production environment and even for ensuring that the model is performant after being released.
 
+![consume](./screenshots/Step%206%20-%20benchmark%20sh%20run.png)
+
 ### 7. Create, Publish, and Consume a Pipeline
 While all of these steps listed above can be completed manually through the Azure Machine Learning Studio, they can also be done programmatically using the Azure SDK for Python. These steps are outlined in the `starter_files/aml-pipelines-with-automated-machine-learning-step.ipynb`. Since the experiment, dataset, and compute cluster were already created previously, we can update the notebook to reference these rather than recreating them. Once that has been done, the `AutoMLConfig` and the `PipelineData` objects for metrics and model data can be created and used to create the `AutoMLStep` that will be used in the AzureML `Pipeline`. Once this pipeline has been submitted ot the existing experiment, we can see it in Azure ML Studio under `Pipelines`, as seen below:
 
+![pipeline](./screenshots/Step%207%20-%20RunDetails%20blank.png)
+
+![pipeline](./screenshots/Step%207%20-%20RunDetails%20output%20(not%20working).png)
+
+![pipeline](./screenshots/Step%207%20-%20bankmarketing%20dataset.png)
+
+![pipeline](./screenshots/Step%207%20-%20experiment%20submission.png)
+
 Once the job is complete and the best model has been identified, the pipeline can be published. This creates the REST endpoint that can be used to interact with the newly trained model. The new Pipeline Endpoint can be seen in Azure ML Studio under the `Pipeline endpoints` tab in the `Pipelines` section in the portal:
+
+![pipeline](./screenshots/Step%207%20-%20pipeline%20endpoint%20active.png)
+
+![pipeline](./screenshots/Step%207%20-%20pipeline%20endpoints.png)
+
+![pipeline](./screenshots/Step%207%20-%20pipeline%20execution.png)
+
+![pipeline](./screenshots/Step%207%20-%20pipeline%20list.png)
+
+![pipeline](./screenshots/Step%207%20-%20pipeline%20rest%20endpoint.png)
 
 Looking at the published pipeline in the image below, we can see the full pipeline consists of only two main components: The Bankmarketing dataset and the AutoML module. On the right side of the page under the `Published pipeline overview`, we can also see the endpoint and that the status is `Active`.
 
+![pipeline](./screenshots/Step%207%20-%20pipeline%20submitted.png)
+
 Next, we can submit a pipeline run to the published pipeline endpoint by sending a POST request to the endpoint with the `ExperimentName` in the in the JSON request body. The status of the run can be monitored with the `RunDetails` widget, as seen below:
+
+![pipeline](./screenshots/Step%207%20-%20pipeline%20workflow.png)
 
 Looking at the pipeline jobs in Azure ML Studio, we see the newly created job as part of the `pipeline-rest-endpoint` job:
 
+
 Viewing the details of this job, we can see the the `Run ID` matches what we previously saw in the `RunDetails` widget from in the notebook:
 
+![pipeline](./screenshots/Step%207%20-%20pipelines.png)
+
 And with that, we have a pipeline to train and deploy a new model and an endpoint that we can use to interact with it. Whether it's through Azure ML Studio directly or the Azure SDK for Python, Azure Automated ML can be leveraged to train and deploy highly performant models quickly and efficiently.
+
+![pipeline](./screenshots/Step%207%20-%20published%20pipeline.png)
 
 ## Architecture Diagram
 The overall flow of can be summarized in the diagram below:
