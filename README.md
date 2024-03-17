@@ -219,6 +219,7 @@ The overall flow of can be summarized in the diagram below:
 There is a lot more work to do in addition to monitoring and retraining this model.
 
 - Using the Apache Benachmark tool to gain insight into measures of benchmark performance (f.e. average runtime)
+- Deep data cleaning/feature engineering process before training the model could improve prediction accuracy.
 - Applying parallel run step in the pipeline to accelerate the training
 - Test a local container with the deployed model
 
