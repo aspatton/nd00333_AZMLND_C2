@@ -25,7 +25,7 @@ I was able to create the SP via code. With that complete, I created a custom rol
 
 Next, RBAC was created as the next diagram illustrates.
 
-![authentication](./screenshots/Step%201%20-%20Create%20Rback.png)
+![authentication](./screenshots/Step%201%20-%20Create%20RBAC.png)
 
 The next step was the assignement of owner rights of the workspace to the SP, but this no longer works as the SDK has changed.
 
