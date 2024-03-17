@@ -195,6 +195,8 @@ Published pipeline endpoint:
 
 The overall flow of can be summarized in the diagram below:
 
+![pipeline](./screenshots/arch_diagram_2_b.png)
+
 ## Future Enhancements
 
 For future enhancements for this project, I would have liked to make the Swagger UI work properly, allowing requests to be made directly from the UI rather than just seeing the example request and response bodies. Additionally, I would like to set up a pipeline with a different type of model with a different goal than classification, such as a Named Entity Recognition (NER) model to extract entities from text. While the pipeline would likely have many similarities, I imagine there are some aspects that would be different. Any other type of model would also be interesting to look at so that I can compare how the set-up may differ from one model to another.
