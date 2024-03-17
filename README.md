@@ -48,6 +48,10 @@ Using the Bankmarketing dataset, AutoML was used on a binary classification - th
 
 Once the dataset is available, a new experiment was created through Azure ML Studio via 'Automated ML' menu, selecting 'New Automated ML job', utilzing the 'bankmarketing_train' Dataset, and utilizing a compute cluster for the job (previously created). The completed experiment is shown next:
 
+![automation](./screenshots/Step%203%20-%20Select%20Best%20Model.png)
+
+Clicking on the best model (found by AutomML), gives more details this 'best model' which turns out to be 'VotingEnsemble' as shown below.
+
 ![automation](./screenshots/Step%202%20-%20AutoML%20Experiment.png)
 
 From this completed experiment, I was able to find the best model via AutoML. The Best Model for this project is 
@@ -60,8 +64,6 @@ From this completed experiment, I was able to find the best model via AutoML. Th
 Now that I have the best model, I can deploy it using Azure Container Instance (ACI). This allows me to interact with the model via an endpoint and HTTP POST requests. The endpoint URI is used to send requests to the endpoint. JSON data payload is provided in the request. 
 
 ![automation](./screenshots/Step%203%20-%20Deploy%20Model.png)
-
-![automation](./screenshots/Step%203%20-%20Select%20Best%20Model.png)
 
 ### 4. Enable Logging
 
