@@ -126,43 +126,66 @@ Apache Benchmark is a great tool to ensure that a deployed model is able to hand
 
 ### 7. Create, Publish, and Consume a Pipeline
 
-While all of these steps listed above can be completed manually through the Azure Machine Learning Studio, they can also be done programmatically using the Azure SDK for Python. These steps are outlined in the 'starter_files/aml-pipelines-with-automated-machine-learning-step.ipynb'. Since the experiment, dataset, and compute cluster were already created previously, we can update the notebook to reference these rather than recreating them. Once that has been done, the 'AutoMLConfig' and the 'PipelineData' objects for metrics and model data can be created and used to create the 'AutoMLStep' that will be used in the AzureML 'Pipeline'. Once this pipeline has been submitted ot the existing experiment, we can see it in Azure ML Studio under 'Pipelines', as seen below:
+While all of these steps listed above can be completed manually through the Azure Machine Learning Studio, they can be accomplished via code as well with the helpe of the Azure SDK (Python in this case). The steps are outlined in the 'aml-pipelines-with-automated-machine-learning-step.ipynb' Jupyter notebook. Since the experiment, dataset, and compute cluster were already created previously, the notebook was updated to utilized these resources rather than recreating them. At this point, the 'AutoMLConfig' and the 'PipelineData' objects for metrics and model data can be created and used to create the 'AutoMLStep' that will be used in the AzureML 'Pipeline'. Once this pipeline has been submitted to experiment, you can see it under 'Pipelines':
 
+Run details: 
 ![pipeline](./screenshots/Step%207%20-%20RunDetails%20blank.png)
+
+There are problems with the RunDetails object:
 
 ![pipeline](./screenshots/Step%207%20-%20RunDetails%20output%20(not%20working).png)
 
+Here is the Dataset used:
+
 ![pipeline](./screenshots/Step%207%20-%20bankmarketing%20dataset.png)
+
+The Experiment submitted:
 
 ![pipeline](./screenshots/Step%207%20-%20experiment%20submission.png)
 
-Once the job is complete and the best model has been identified, the pipeline can be published. This creates the REST endpoint that can be used to interact with the newly trained model. The new Pipeline Endpoint can be seen in Azure ML Studio under the 'Pipeline endpoints' tab in the 'Pipelines' section in the portal:
+Once the experiment/job is complete and the best model has been identified, the pipeline can be published. This creates the REST endpoint that can be used to interact with the newly trained model. The new Pipeline Endpoint can be seen in Azure ML Studio under the 'Pipeline endpoints' tab in the 'Pipelines' section in the portal:
+
+Active Endpoints:
 
 ![pipeline](./screenshots/Step%207%20-%20pipeline%20endpoint%20active.png)
 
+Pipeline Endpoints:
+
 ![pipeline](./screenshots/Step%207%20-%20pipeline%20endpoints.png)
+
+Pipeline Execution: 
 
 ![pipeline](./screenshots/Step%207%20-%20pipeline%20execution.png)
 
+Pipeline list:
+
 ![pipeline](./screenshots/Step%207%20-%20pipeline%20list.png)
+
+Pipeline REST endpoint:
 
 ![pipeline](./screenshots/Step%207%20-%20pipeline%20rest%20endpoint.png)
 
 Looking at the published pipeline in the image below, we can see the full pipeline consists of only two main components: The Bankmarketing dataset and the AutoML module. On the right side of the page under the 'Published pipeline overview', we can also see the endpoint and that the status is 'Active'.
 
+Pipeline submitted:
+
 ![pipeline](./screenshots/Step%207%20-%20pipeline%20submitted.png)
 
-Next, we can submit a pipeline run to the published pipeline endpoint by sending a POST request to the endpoint with the 'ExperimentName' in the in the JSON request body. The status of the run can be monitored with the 'RunDetails' widget, as seen below:
+Next, we can submit a pipeline run to the published pipeline endpoint by sending a POST request to the endpoint with the 'ExperimentName' in the in the JSON request body. 
+
+Pipeline workflow:
 
 ![pipeline](./screenshots/Step%207%20-%20pipeline%20workflow.png)
 
 Looking at the pipeline jobs in Azure ML Studio, we see the newly created job as part of the 'pipeline-rest-endpoint' job:
 
-Viewing the details of this job, we can see the the `Run ID` matches what we previously saw in the 'RunDetails' widget from in the notebook:
+Pipelines:
 
 ![pipeline](./screenshots/Step%207%20-%20pipelines.png)
 
 And with that, we have a pipeline to train and deploy a new model and an endpoint that we can use to interact with it. Whether it's through Azure ML Studio directly or the Azure SDK for Python, Azure Automated ML can be leveraged to train and deploy highly performant models quickly and efficiently.
+
+Published pipeline endpoint:
 
 ![pipeline](./screenshots/Step%207%20-%20published%20pipeline.png)
 
