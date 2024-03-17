@@ -48,14 +48,13 @@ Using the Bankmarketing dataset, AutoML was used on a binary classification - th
 
 Once the dataset is available, a new experiment was created through Azure ML Studio via 'Automated ML' menu, selecting 'New Automated ML job', utilzing the 'bankmarketing_train' Dataset, and utilizing a compute cluster for the job (previously created). The completed experiment is shown next:
 
-![automation](./screenshots/Step%203%20-%20Select%20Best%20Model.png)
-
-Clicking on the best model (found by AutomML), gives more details this 'best model' which turns out to be 'VotingEnsemble' as shown below.
-
 ![automation](./screenshots/Step%202%20-%20AutoML%20Experiment.png)
 
-From this completed experiment, I was able to find the best model via AutoML. The Best Model for this project is 
- the VotingEnsemble model as shown next:
+You can drill into the experiment to discover what it labeled the 'Best Model'.
+
+![automation](./screenshots/Step%203%20-%20Select%20Best%20Model.png)
+
+From this completed experiment, I was able to find the best model via AutoML. The Best Model for this project is the VotingEnsemble model as shown next:
 
 ![automation](./screenshots/Step%202%20-%20AutoML%20-%20Best%20Model.png)
 
